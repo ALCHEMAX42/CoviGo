@@ -10,19 +10,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(__dirname+"/public"));
 
-mongoose.connect(
-	"mongodb://localhost:27017/webtechDB",
-	{ useNewUrlParser: true , useUnifiedTopology: true },
-);
+mongoose.connect("mongodb://localhost:27017/webtechDB",{ useNewUrlParser: true , useUnifiedTopology: true }, ()=>{
+  console.log('Connected to Mongodb');
+});
 
 const blogSchema = new mongoose.Schema({
 	name: { type: String, required: true },
 	content: { type: String, required: true },
 	date: { type: Date, default: Date.now },
-	likes: { type: Number, default: 0 },
+	email: { type: String, required: true },
 });
 
-const Blog = mongoose.model('Blog',blogSchema);
+
+
+const Blog = mongoose.model('Blog', blogSchema);
 
 // const blog1 = new Blog({
 //   name: "Parth",
@@ -45,6 +46,7 @@ app.post("/createBlog", (req,res)=>{
   console.log(req.body.blog);
   const newBlog = new Blog({
     name: name,
+    email: req.body.email,
     content: req.body.blog
   });
   newBlog.save();

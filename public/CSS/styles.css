@@ -58,7 +58,7 @@ a {
 label{
   font-size: 45px;
 }
-#name {
+#name, #email {
     width: 80%;
     text-align: center;
     padding: 15px;
@@ -67,10 +67,13 @@ label{
 }
 #blog {
   width: 80%;
-  
+  text-align: center;
   padding: 15px;
   margin: 80px 100px;
   box-sizing: border-box;
+}
+#blog:focus {
+  text-align: left;
 }
 
 .container1 {

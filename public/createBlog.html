@@ -36,8 +36,9 @@
   <h1>Share your Covid 19 experience</h1>
   
   <form action="/createBlog" method="post">
-    <label for="name">Name:</label><input type="text" name="name" id="name"><br><br>
-    <label for="blog"> Your Story:</label><textarea name="blog" id="blog" cols="30" rows="10"></textarea><br>
+    <input type="text" name="name" id="name" placeholder="Name" required><br><br>
+    <input type="text" name="email" id="email" placeholder="Email" required onblur="ValidateEmail()"><br><br>
+    <textarea name="blog" id="blog" cols="30" rows="10" placeholder="Your Story" onfocus="wordFilter()"></textarea><br>
     <button id="submit" type="submit">Submit</button>
   </form>
 
@@ -51,6 +52,16 @@
     document.getElementById("submit").style.backgroundColor = "white";
     document.getElementById("submit").style.color = "#00235a";
     });
+    function ValidateEmail() {
+      var regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      if(regex.test(document.getElementById("email").value) === true) {
+        console.log('match');
+      } else {
+        alert("You have entered an invalid email address!");
+        return false;
+      }
+    }
+
   </script>
 </body>
 </html>

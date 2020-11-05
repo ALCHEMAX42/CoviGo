@@ -1,10 +1,9 @@
 const covidURL = "https://api.covid19api.com/summary";
-const blogURL = "http://localhost:3000/blogAPI";
-
+const blogURL = "./blogAPI";
+const indianStatsURL = "https://api.covid19india.org/data.json";
 let app = angular.module("MyApp",[]);
 
 app.controller('MyCtrl',($scope , $http)=>{
-    // this is controller
     $scope.countries = [];
     $http.get(covidURL)
     .then((response)=>{
@@ -24,8 +23,12 @@ app.controller('MyBlog', ($scope, $http) => {
 })
 
 
-
-
+app.controller('indianStats', ($scope, $http)=>{
+  $http.get(indianStatsURL).then((response)=>{
+    console.log(response);
+    $scope.statewise = response.data.statewise;
+  })
+})
 
 
 

@@ -13,38 +13,38 @@
 
   <body>
     <div class="container1" ng-app="MyApp" ng-controller="MyCtrl">
-      <header>
-        <div class="nav">
-          <input type="checkbox" id="nav-check">
-          <div class="nav-header">
-            <div class="nav-title">
-              <a href="index.html">
-                <img src="./logo.gif" class="logo-top">
-              </a>
-            </div>
-          </div>
-          <div class="nav-btn">
-            <label for="nav-check">
-              <span></span>
-              <span></span>
-              <span></span>
-            </label>
-          </div>
-
-          <div class="nav-links">
-            <a href="/" target="_blank">Home</a>
-            <a href="/blog" target="_blank">Blog</a>
-            <a href="/createBlog" target="_blank">Create Blog</a>
-            <!-- <a href="https://jsfiddle.net/user/jo_Geek/" target="_blank">JsFiddle</a> -->
+      <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+          <div class="nav-title">
+            <a href="index.html">
+              <img src="./logo.gif" class="logo-top">
+            </a>
           </div>
         </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
 
-        <h1 class="title">Coronavirus Outbreak Tracker</h1>
-      </header>
+        <div class="nav-links">
+          <a href="index.html" target="">Home</a>
+          <a href="/stateWise" target="">State-Wise</a>
+          <a href="/blog">Blog</a>
+          <a href="/createBlog" target="_blank">Create Blog</a>
+        </div>
+      </div>
+        <div class="title">
+          Coronavirus Outbreak Tracker
+        </div>
+
 
       <div class="buttons">
         <button type="button" name="who"><a
-            href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">WHO Website</a></button>
+            href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank">WHO Website</a></button>
         <button type="button" name="table"> <a href="#table">Coronavirus Table</a></button>
         <!-- <button type="button" name="hospitals"><a href="">Hospitals near me</a></button> -->
         <button type="button" name="blog" onclick="location.href='./blog'">Blog</button>
@@ -96,9 +96,11 @@
             </tr>
             <tr class="country" ng-repeat="country in countries | filter:countryName">
               <td>{{country.Country}}</td>
-              <td>{{country.TotalConfirmed}}  <span class = 'danger'>(+{{country.NewConfirmed}})</span> </td>
-              <td>{{country.TotalDeaths}} <span class = 'danger'>(+{{country.NewDeaths}})</span> </td>
-              <td>{{country.TotalRecovered}} <span class = 'notDanger'>(+{{country.NewRecovered}})</span> </td>
+              <td style="color: white">{{country.TotalConfirmed}} <span
+                  class='danger'>(+{{country.NewConfirmed}})</span> </td>
+              <td style="color: white">{{country.TotalDeaths}} <span class='danger'>(+{{country.NewDeaths}})</span>
+              </td>
+              <td style="color: white">{{country.TotalRecovered}} <span class = 'notDanger'>(+{{country.NewRecovered}})</span> </td>
             </tr>
           </table>
         </div>

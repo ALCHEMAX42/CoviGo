@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>District Wise</title>
+  <link rel="stylesheet" href="./CSS/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body ng-app="MyApp" ng-controller = "indianStats">
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <div class="nav-title">
+        <a href="index.html">
+          <img src="./logo.gif" class="logo-top">
+        </a>
+      </div>
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html" target="">Home</a>
+      <a href="/stateWise" target="">State-Wise</a>
+      <a href="/blog">Blog</a>
+      <a href="/createBlog" target="_blank">Create Blog</a>
+    </div>
+  </div>
+
+    <div id="states" ng-controller='indianStats' ng-app="MyApp">
+      <h1 id="states">Indian State-Wise Statistics</h1>
+      <div class="search-box">
+        <input type="text" name="search" placeholder="Search State" class="search" ng-model="stateName">
+      </div>
+      
+      <div class="states" ng-repeat="state in statewise | filter: stateName" style = "border: 1px solid blue;">
+        <div class = "stateBox">
+          <h4 class="statename">{{state.state}}</h4>
+          <div>
+            <span>Active:  {{state.active}} </span><br>
+            <span style = "color:red">Confirmed: {{state.confirmed}} </span><br>
+            <span style = "color: grey">Deaths: {{state.deaths}}</span> <br>
+            <span style = "color: green">Recovered: {{state.recovered}} </span><br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="./JS/script.js"></script>
+</body>
+</html>
